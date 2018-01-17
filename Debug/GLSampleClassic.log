@@ -1,0 +1,17 @@
+﻿  RenderTriangleClassic.cpp
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(107): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(118): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(130): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(131): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(132): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(152): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(153): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+c:\users\user\desktop\opengl\glsampleclassic\src\rendertriangleclassic.cpp(154): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+  lodepng.cpp
+  GLSampleClassic.cpp
+  Common.cpp
+  Generating Code...
+  GLSampleClassic.vcxproj -> C:\Users\user\Desktop\openGL\GLSampleClassic\Debug\GLSampleClassic.exe
+  C:\Users\user\Desktop\openGL\GLSampleClassic\\libs\Win32\freeglut.dll
+  C:\Users\user\Desktop\openGL\GLSampleClassic\\libs\Win32\glew32.dll
+          2 file(s) copied.
