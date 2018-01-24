@@ -11,6 +11,7 @@
 #include <vector>
 #include <cmath>
 #include <ctime>
+#include <fstream>
 
 #include "Common.h"
 
@@ -43,18 +44,20 @@ public:
 	// pass a key to the renderer
 	virtual void keyPressed(unsigned char ucKey) {};
 	virtual void middle(int i);
+	void calculate_uv_mapping(int i, std::ofstream *ofs);
 	double solve_quadratic(double a, double b, double c);
 
 	// rotate scene
 	virtual void rotX(const float fAngle) { m_fRotX += fAngle; }
 	virtual void rotY(const float fAngle) { m_fRotY += fAngle; }
 	virtual void transZ(const float fZ) { m_fTransZ *= fZ; }
-
+	void calculate_uv_mapping(int i);
 
 protected:
 	int   m_iWidth;
 	int   m_iHeight;
 	map<pair<int, int>, int> middles_map;
+	vector<double> texIndices;
 
 	// vertical viewing angle
 	float m_fHeightAngle;
@@ -75,8 +78,8 @@ protected:
 
 	vector <unsigned> triangles_tmp;
 
-	/*vector <double> vertices = {
-		- X1, 0.0, Z1,
+	vector <double> vertices = {
+		-X1, 0.0, Z1,
 		X1, 0.0, Z1,
 		-X1, 0.0, -Z1,
 		X1, 0.0, -Z1,
@@ -140,25 +143,27 @@ protected:
 		0.5, 0.5, 0.7,
 		0.7, 0.7, 0.9,
 		0.9, 0.5, 0.1
+	};
 
-	};*/
-	
-	
+	/*
 	vector <GLdouble> vertices = {
-		0.0, 0.0, 0.0,
-		1.0, 0.0, 0.0,
-		0.0, 1.0, 0.0
-//		1.0, 0.0, 0.0
+	0.0, 0.0, 0.0,
+	1.0, 0.0, 0.0,
+	0.0, 1.0, 0.0,
+	0.0, 1.0, 0.0,
+	1.0, 1.0, 0.0,
+	1.0, 0.0, 0.0
 	};
 
 	vector <GLuint> triangles = {
-		1, 0, 2
+	0, 2, 1,
+	4, 5, 3
 	};
 
 	vector <GLdouble> col = {
-		0.0, 0.0, 1.0
-	};
-	
+	0.0, 0.0, 1.0
+	};*/
+
 };
 
 
