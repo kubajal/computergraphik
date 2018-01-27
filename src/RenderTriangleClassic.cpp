@@ -183,17 +183,14 @@ RenderTriangleClassic::middle(int i) {
 
 }
 void
-RenderTriangleClassic::calculate_uv_mapping(int i, std::ofstream *ofs) {
+RenderTriangleClassic::calculate_uv_mapping(int i) {
 
 	double length = sqrt(vertices[i] * vertices[i] + vertices[i + 1] * vertices[i + 1] + vertices[i + 2] * vertices[i + 2]);
 	double x = 0.5 + atan2(vertices[i + 2] / length, vertices[i] / length) / 6.28;
-	double y = 0.5 + 0.5 * vertices[i + 1] / length;
+	double y = 0.5 + asin(vertices[i + 1] / length) / 2;
 
 	texIndices.push_back(x);
 	texIndices.push_back(y);
-
-	*ofs << vertices[i] << ", " << vertices[i + 1] << ", " << vertices[i] << ", " << x << "; " << y << endl;
-	// printf("length = %f\n", length);
 }
 
 void
@@ -218,22 +215,11 @@ RenderTriangleClassic::render()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	/*texIndices = {
-	0.3, 0.0,
-	0.3, 1.0,
-	1.3, 0.0,
-	1.3, 0.0,
-	1.3, 1.0,
-	0.3, 1.0
-	};*/
-
-	std::ofstream a = ofstream("test.txt", std::ofstream::out);
-
 	texIndices.clear();
 
-	for (int i = 0; i < triangles.size(); i++) {
+	for (int i = 0; i < vertices.size(); i += 3) {
 
-		calculate_uv_mapping(triangles[i], &a);
+		calculate_uv_mapping(i);
 	}
 
 	glEnable(GL_TEXTURE_2D);

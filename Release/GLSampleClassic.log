@@ -1,13 +1,14 @@
 ﻿  RenderTriangleClassic.cpp
 src\RenderTriangleClassic.cpp(22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-src\RenderTriangleClassic.cpp(108): warning C4018: '<': signed/unsigned mismatch
-src\RenderTriangleClassic.cpp(119): warning C4018: '<': signed/unsigned mismatch
+src\RenderTriangleClassic.cpp(109): warning C4018: '<': signed/unsigned mismatch
+src\RenderTriangleClassic.cpp(120): warning C4018: '<': signed/unsigned mismatch
+src\RenderTriangleClassic.cpp(220): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  1 of 693 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 708 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    30 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  GLSampleClassic.vcxproj -> C:\Users\user\Desktop\openGL\GLSampleClassic\Release\GLSampleClassic.exe
-  C:\Users\user\Desktop\openGL\GLSampleClassic\\libs\Win32\freeglut.dll
-  C:\Users\user\Desktop\openGL\GLSampleClassic\\libs\Win32\glew32.dll
+  GLSampleClassic.vcxproj -> C:\Users\user\Desktop\openGL\Praktikumsaufgabe\Release\GLSampleClassic.exe
+  C:\Users\user\Desktop\openGL\Praktikumsaufgabe\\libs\Win32\freeglut.dll
+  C:\Users\user\Desktop\openGL\Praktikumsaufgabe\\libs\Win32\glew32.dll
           2 file(s) copied.
