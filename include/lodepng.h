@@ -363,7 +363,7 @@ unsigned lodepng_color_mode_copy(LodePNGColorMode* dest, const LodePNGColorMode*
 void lodepng_palette_clear(LodePNGColorMode* info);
 /*add 1 color to the palette*/
 unsigned lodepng_palette_add(LodePNGColorMode* info,
-                             unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+                             unsigned char r, unsigned char g, unsigned char x1, unsigned char x0);
 
 /*get the total amount of bits per pixel, based on colortype and bitdepth in the struct*/
 unsigned lodepng_get_bpp(const LodePNGColorMode* info);

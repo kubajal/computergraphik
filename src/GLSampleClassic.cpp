@@ -26,12 +26,10 @@ void setupRenderer();
 RenderTriangleClassic* g_pcRenderer = NULL;
 int       g_iRenderer  = 0;
 
-
-
 int main(int argc, char* argv[])
 {
-  const unsigned int uiWidth = 800;
-  const unsigned int uiHeight = 600;
+  const unsigned int uiWidth = 1024;
+  const unsigned int uiHeight = 1024;
 
   glutInit( &argc, argv );                                      // initialize library
 
@@ -42,7 +40,7 @@ int main(int argc, char* argv[])
   glutCreateWindow( "OpenGL Example Program" );                 // opens the window and return the window id
 
   glewInit();                                                   // initialize glew, OpenGL context must already be available!!
-
+  
   // setup the renderer
   setupRenderer( );
   g_pcRenderer->setWindowSize(uiWidth, uiHeight);
@@ -54,14 +52,7 @@ int main(int argc, char* argv[])
   glutReshapeFunc( &reshapeCallback );                          // set the callback in case of window resizing
   glutKeyboardFunc( &keyboardCallback );                        // set the callback for key presses
 
-  std::cout << "press q to quit" << std::endl;
-  std::cout << "press k to turn left" << std::endl;
-  std::cout << "press l to turn right" << std::endl;
-  std::cout << "press a to turn forward" << std::endl;
-  std::cout << "press y to turn backward" << std::endl;
-  std::cout << "press + to move forward" << std::endl;
-  std::cout << "press - to move backward" << std::endl;
-  std::cout << "press n for next demo" << std::endl;
+  std::cout << "use a, s, d, w, z, x, i, j, k, l to move" << std::endl;
 
   glutMainLoop();
 
@@ -96,48 +87,51 @@ void reshapeCallback( int width, int height )
   glutPostRedisplay();                                          // creates an event for redrawing (calls displayCallback() )
 }
 
+float k = .5;
+
 void keyboardCallback( unsigned char key, int x, int y)
 {
   switch( key ) 
   {
-  case 'k':
-    g_pcRenderer->rotY( 2.0f );
-    break;
-
-  case 'l':
-    g_pcRenderer->rotY( -2.0f );
-    break;
-
   case 'a':
-    g_pcRenderer->rotX(2.0f);
+	g_pcRenderer->globalCamera.position = g_pcRenderer->globalCamera.position + Vec3f(k, 0.0, 0.0);
     break;
 
-  case 'y':
-	  g_pcRenderer->rotX(-2.0f);
+  case 'd':
+	 g_pcRenderer->globalCamera.position =g_pcRenderer->globalCamera.position + Vec3f(-k, 0.0, 0.0);
+    break;
+
+  case 's':
+	 g_pcRenderer->globalCamera.position =g_pcRenderer->globalCamera.position + Vec3f(0.0, -k, 0.0);
+    break;
+
+  case 'w':
+	 g_pcRenderer->globalCamera.position =g_pcRenderer->globalCamera.position + Vec3f(0.0, k, 0.0);
 	  break;
 
   case 'z':
-	  g_pcRenderer->rotY(-2.0f);
+	  g_pcRenderer->globalCamera.position = g_pcRenderer->globalCamera.position + Vec3f(0.0, 0.0, k);
 	  break;
 
-  case '+':
-    g_pcRenderer->transZ(0.98f);
-    break;
-
-  case '-':
-    g_pcRenderer->transZ(1.0f/0.98f);
-    break;
-
-  case 'n':
-    g_iRenderer++;
-    setupRenderer();
-    g_pcRenderer->initGL();
-    break;
-
-  case 'p':
-	  g_pcRenderer->middles();
+  case 'x':
+	  g_pcRenderer->globalCamera.position = g_pcRenderer->globalCamera.position + Vec3f(0.0, 0.0, -k);
 	  break;
 
+  case 'i':
+	  g_pcRenderer->globalCamera.direction = g_pcRenderer->globalCamera.direction + Vec3f(0.0, 0.5, 0.0);
+	  break;
+
+  case 'k':
+	  g_pcRenderer->globalCamera.direction = g_pcRenderer->globalCamera.direction + Vec3f(0.0, -0.5, 0.0);
+	  break;
+
+  case 'j':
+	  g_pcRenderer->globalCamera.direction = g_pcRenderer->globalCamera.direction + Vec3f(0.5, 0.0, 0.0);
+	  break;
+
+  case 'l':
+	  g_pcRenderer->globalCamera.direction = g_pcRenderer->globalCamera.direction + Vec3f(-0.5, 0.0, 0.0);
+	  break;
 
   case 'q':
 	  glutLeaveMainLoop();
@@ -162,7 +156,6 @@ setupRenderer()
 
   if( 0 == g_iRenderer ) 
   {
-    std::cout << std::endl << "Render a simple triangle" << std::endl;
     g_pcRenderer = new RenderTriangleClassic;
   }
   else 
